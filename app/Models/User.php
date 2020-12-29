@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -45,6 +46,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //mutators
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password']=Hash::needsRehash($value) ? Hash::make($value) : $value;
+    }
+
+
+ // relations
     public function posts()
     {
         return $this->hasMany(Post::class);
@@ -95,7 +105,8 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function messages(){
+    public function messages()
+    {
         return $this->hasMany(Message::class);
     }
 }

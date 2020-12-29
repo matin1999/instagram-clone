@@ -10,7 +10,7 @@ class Story extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $fillable = ['user_id', 'content'];
+    protected $fillable = ['user_id'];
 
     public function creator()
     {
