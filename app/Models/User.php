@@ -20,6 +20,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_name',
+        'mobile',
+        'bio',
+        'private',
+        'password',
     ];
 
     /**
@@ -40,4 +45,57 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function stories()
+    {
+        return $this->hasMany(Story::class);
+    }
+
+    public function mentions()
+    {
+        return $this->hasMany(Mention::class, 'user_id');
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(
+            self::class,
+            'followers',
+            'following_id',
+            'user_id'
+        );
+    }
+
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'following_id');
+    }
+
+    public function blockedUsers()
+    {
+        return $this->belongsToMany(User::class, 'blocked_users', 'blocker_id', 'blocked_id');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
 }
