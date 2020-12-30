@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
+
+    public $timestamps = false;
+
     use HasFactory;
 
     protected $fillable = [
@@ -17,7 +20,7 @@ class Tag extends Model
 
     public function posts()
     {
-        return $this->morphedByMany(Post::class, 'taggable');
+        return $this->belongsToMany(Post::class);
     }
 
 }

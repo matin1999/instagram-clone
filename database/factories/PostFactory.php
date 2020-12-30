@@ -23,6 +23,7 @@ class PostFactory extends Factory
     {
         return [
             'caption' => $this->faker->paragraph,
+            'user_id' => rand(1,20),
         ];
     }
 }
