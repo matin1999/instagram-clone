@@ -29,7 +29,6 @@ class UserFactory extends Factory
             'mobile' => '0912' . $this->faker->randomNumber(8),
             'bio' => $this->faker->sentence(),
             'password' => 123456,
-
         ];
     }
 }

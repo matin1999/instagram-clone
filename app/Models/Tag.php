@@ -14,8 +14,6 @@ class Tag extends Model
 
     protected $fillable = [
         'title',
-        'tagable_type',
-        'tagable_id',
     ];
 
     public function posts()

@@ -22,13 +22,13 @@ class CreateFollowingTable extends Migration
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->foreignId('user_id')
+            $table->foreignId('follower_id')
                 ->references('id')
                 ->on('users')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->unique(['following_id', 'user_id']);
+            $table->unique(['following_id', 'follower_id']);
         });
     }
 
