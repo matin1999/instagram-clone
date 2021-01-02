@@ -28,10 +28,10 @@
                     posts {{count($user->posts)}}
                 </div>
                 <div class="col-sm font-weight-bold">
-                    <a href="*">followers {{count($user->followers)}}</a>
+                    <a href="{{route('followers.show',$user->id)}}">followers {{count($user->followers)}}</a>
                 </div>
                 <div class="col-sm font-weight-bold">
-                    <a href="*">following {{count($user->followings)}}</a>
+                    <a href="{{route('following.show',$user->id)}}">following {{count($user->followings)}}</a>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                     @endif
                 </form>
             @else
-                <a href="{{ route('account') }}" class="btn btn-primary col-12"><span class="icon"><i
+                <a href="{{ route('account') }}" class="btn btn-secondary col-12"><span class="icon"><i
                             class="fas fa-cog"></i></span><span>{{
                 __('Settings') }}</span></a>
             @endif

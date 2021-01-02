@@ -21,15 +21,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//users profile
+Route::get('/profile/{user}', 'UserController@show')->name('account.show');
+Route::get('/{user}/followings', 'UserController@following')->name('following.show');
+Route::get('/{user}/followers', 'UserController@followers')->name('followers.show');
+//auth profile
 Route::middleware(['auth'])->group(function () {
 
     //Users
     Route::get('/account/settings', 'UserController@settings')->name('account');
-    Route::get('/profile/{user}', 'UserController@show')->name('account.show');
-
     Route::patch('/account/settings', 'UsersController@update')->name('account.update');
-
     Route::get('/account', function () {
         return redirect()->route('account.show', ['user' => auth()->id()]);
     });
