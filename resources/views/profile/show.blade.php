@@ -3,9 +3,12 @@
     <div class="container">
         <div class="info">
             <div class="row">
-                    <img class="rounded" style="vertical-align: middle;width: 100px;height: 100px;border-radius: 100%;"
-                         src="{{ $user->image->path ? $user->image->path : 'http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon' }}">
+                <div>
+                    <img class="rounded-circle" style="vertical-align: middle;width: 100px;height: 100px;border-radius: 100%;"
+                         src="{{ $user->image ? $user->image->path : 'http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon' }}">
+                </div>
                 <br>
+                    <br>
                 <div>
                     <h4 class="title">
                         {{ $user->name}}
@@ -55,17 +58,19 @@
         </div>
     </div>
     <hr class="border-secondary">
-    <div class="card-container">
+    <div class="container">
+        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Posts</h1>
+        <div class="row text-center text-lg-left">
+
         @if(count($posts) > 0)
             @foreach($posts as $post)
-                <div class="photo-box">
-                    <div class="image-wrap">
-                        <img src="{{$post->images->first()->path}}">
-                    </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                        <img class="img-fluid img-thumbnail" src="{{$post->images->first()->path}}">
                 </div>
             @endforeach
         @else
             <p>Nothing</p>
         @endif
-    </div>
+            <div class="row text-center text-lg-left">
+            </div>
 @endsection
