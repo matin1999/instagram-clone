@@ -5,9 +5,10 @@
             <div class="media border p-3">
                 <img src="{{$user->image ? $user->image->path : 'http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon'}}"  class="mr-3 mt-3 rounded-circle" style="width:60px;">
                 <div class="media-body">
-                    <h4>{{$user->user_name}}</h4>
+                    <h4><a href="{{route('account.show',$user->id)}}">{{$user->user_name}}</a></h4>
                 </div>
             </div>
+        @if(auth()->check())
         @if($user->id !== Auth::id())
             <form method="POST" action="" class="w100">
                 @csrf
@@ -20,6 +21,7 @@
             </form>
         @else
 
+        @endif
         @endif
     @endforeach
 </div>

@@ -27,10 +27,13 @@ Route::get('/{user}/followings', 'UserController@following')->name('following.sh
 Route::get('/{user}/followers', 'UserController@followers')->name('followers.show');
 //auth profile
 Route::middleware(['auth'])->group(function () {
-
     //Users
+    //follow method
+    Route::post('/profile/{user}/follow', 'FollowController@follow')->name('account.follow');
+    //setting
     Route::get('/account/settings', 'UserController@settings')->name('account');
     Route::patch('/account/settings', 'UsersController@update')->name('account.update');
+    //auth user account
     Route::get('/account', function () {
         return redirect()->route('account.show', ['user' => auth()->id()]);
     });

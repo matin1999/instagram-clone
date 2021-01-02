@@ -40,10 +40,11 @@
             <h4>{{ $user->bio }}</h4>
         </div>
         <div class="user-button">
+            @if(auth()->check())
             @if($user->id !== Auth::id())
-                <form method="POST" action="" class="w100">
+                <form method="POST" action="{{route('account.follow',$user->id)}}" class="w100">
                     @csrf
-                    @if(Auth::user()->isFollowing( $user ))
+                    @if($user->isFollowedBy(Auth::id()))
                         <input type="submit" class="btn btn-danger col-12"
                                value="{{ __('Unfollow') }}">
                     @else
@@ -54,6 +55,7 @@
                 <a href="{{ route('account') }}" class="btn btn-secondary col-12"><span class="icon"><i
                             class="fas fa-cog"></i></span><span>{{
                 __('Settings') }}</span></a>
+            @endif
             @endif
         </div>
     </div>
