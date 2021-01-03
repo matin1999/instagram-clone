@@ -12,38 +12,38 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    protected $post;
+    protected $user;
 
-    public function __construct(UserInterface $post)
+    public function __construct(UserInterface $user)
     {
-        $this->post = $post;
+        $this->user = $user;
     }
 
     public function show($id)
     {
-        $user = User::with(['posts','stories','image', 'followers','followings'])->find($id);
-        $posts=Post::with('images')->where('user_id',$id)->get();
+        $user = User::with(['posts', 'stories', 'image', 'followers', 'followings'])->find($id);
+        $posts = Post::with('images')->where('user_id', $id)->get();
         return view('profile.show')->withUser($user)->withPosts($posts);
     }
 
     public function following($id)
     {
         $users = User::with(['followings'])->find($id);
-        $follow=$users->followings;
+        $follow = $users->followings;
         return view('profile.list')->withFollow($follow);
     }
 
     public function followers($id)
     {
         $users = User::with(['followers'])->find($id);
-        $follow=$users->followers;
+        $follow = $users->followers;
         return view('profile.list')->withFollow($follow);
     }
 
     public function settings()
     {
-        $user=User::with(['image'])->find(auth()->id());
-        return view('profile.setting')->with('user',$user);
+        $user = User::with(['image'])->find(auth()->id());
+        return view('profile.setting')->with('user', $user);
     }
 
     public function update(UserUpdateRequest $request)
@@ -52,14 +52,10 @@ class UserController extends Controller
 
         //Update image if new one provided
         if ($request->image !== null) {
+            $user->image ? $user->image->delete() : $user->image;
             $path = $request->file('image')->store('public/image');
-            Image::create([
-                'path' => $path,
-                'imageable_id' => auth()->id(),
-                'imageable_type' => User::class,
-            ]);
+            $this->user->createImage($path,$id=auth()->id(),$model=User::class);
         }
-
         //Update rest if set.
         strlen($request->user_name) > 0 ? $user->user_name = $request->user_name : '';
         strlen($request->bio) > 0 ? $user->bio = $request->bio : '';

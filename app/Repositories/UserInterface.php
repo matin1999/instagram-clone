@@ -9,6 +9,8 @@ interface UserInterface extends BaseRepositoryInterface
 
     public function create(array $datas);
 
-    public function updateImage(array $datas);
+    public function createImage($path,$id,$model);
+
+    public function checkNotNul($req,$atr);
 
 }
