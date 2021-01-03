@@ -9,20 +9,20 @@
                 </div>
             </div>
         @if(auth()->check())
-        @if($user->id !== Auth::id())
-            <form method="POST" action="" class="w100">
-                @csrf
-                @if(Auth::user()->isFollowing( $user ))
-                    <input type="submit" class="btn btn-danger col-12"
-                           value="{{ __('Unfollow') }}">
-                @else
-                    <input type="submit" class="btn btn-primary col-12" value="{{ __('Follow') }}">
-                @endif
-            </form>
-        @else
-
+            @if($user->id !== Auth::id())
+                <form method="POST" action="{{route('account.follow',$user->id)}}" class="w100">
+                    @csrf
+                    @if($user->isFollowedBy(Auth::id()))
+                        <input type="submit" class="btn btn-danger col-12"
+                               value="{{ __('Unfollow') }}">
+                    @else
+                        <input type="submit" class="btn btn-primary col-12" value="{{ __('Follow') }}">
+                    @endif
+                </form>
+            @else
+            @endif
         @endif
-        @endif
+        <br>
     @endforeach
 </div>
 @endsection

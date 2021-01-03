@@ -5,7 +5,7 @@
             <div class="row">
                 <div>
                     <img class="rounded-circle" style="vertical-align: middle;width: 100px;height: 100px;border-radius: 100%;"
-                         src="{{ $user->image ? $user->image->path : 'http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon' }}">
+                         src="{{is_link($user->image->path) ? $user->image->path : asset(str_replace('public','storage' ,$user->image->path))}}">
                 </div>
                 <br>
                     <br>
@@ -14,7 +14,7 @@
                         {{ $user->name}}
                     </h4>
                     <h3 class="subtitle">
-                        <a href="{{route('account.show',$user->id)}}">{{ '@'.$user->name }}</a>
+                        <a href="{{route('account.show',$user->id)}}">{{ '@'.$user->user_name }}</a>
                     </h3>
                 </div>
 
@@ -52,9 +52,7 @@
                     @endif
                 </form>
             @else
-                <a href="{{ route('account') }}" class="btn btn-secondary col-12"><span class="icon"><i
-                            class="fas fa-cog"></i></span><span>{{
-                __('Settings') }}</span></a>
+                <a href="{{ route('account') }}" class="btn btn-secondary col-12"><span>{{__('Settings') }}</span></a>
             @endif
             @endif
         </div>

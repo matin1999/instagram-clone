@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -65,6 +66,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create($data);
+         $user=User::create($data);
+         Image::create([
+            'path' => 'https://www.gravatar.com/avatar/',
+            'imageable_id' => $user->id,
+            'imageable_type' => User::class,
+        ]);
+        return $user;
     }
 }

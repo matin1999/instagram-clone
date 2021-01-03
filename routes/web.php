@@ -32,9 +32,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/{user}/follow', 'FollowController@follow')->name('account.follow');
     //setting
     Route::get('/account/settings', 'UserController@settings')->name('account');
-    Route::patch('/account/settings', 'UsersController@update')->name('account.update');
+    Route::patch('/account/settings', 'UserController@update')->name('account.update');
     //auth user account
     Route::get('/account', function () {
         return redirect()->route('account.show', ['user' => auth()->id()]);
-    });
+    })->name('user.account');
 });

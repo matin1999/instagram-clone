@@ -33,6 +33,6 @@ class FollowController extends Controller
             $record->delete();
         }
 
-        return redirect()->route('account.show', $id);
+        return redirect()->back();
     }
 }
