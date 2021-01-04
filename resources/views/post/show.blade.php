@@ -1,22 +1,3 @@
-{{--@extends('layouts.app')--}}
-{{--@section('content')--}}
-{{--    <div class="container justify-content-center">--}}
-{{--        <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">--}}
-{{--        <div class="carousel-inner">--}}
-{{--            @foreach($post->images as $image)--}}
-{{--            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">--}}
-{{--                <img  src="{{ is_link($image->path) ? $image->path : asset(str_replace('public','storage' ,$image->path)) }}"/>--}}
-{{--            </div>--}}
-{{--            @endforeach--}}
-{{--        </div>--}}
-{{--            <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">--}}
-{{--                <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
-{{--                <span class="sr-only">Previous</span>--}}
-{{--            </a>--}}
-{{--        </div>--}}
-
-{{--    </div>--}}
-{{--@endsection--}}
 @extends('layouts.app')
 @section('content')
     <section class="pt-10 md:pt-16 gray">
@@ -41,6 +22,11 @@
                     <br>
                     <hr>
                    {{--        like bottun and counters        --}}
+                    <div>likes: {{count($post->likes)}}
+                        <br>
+                        <i class="fa-heart"></i>
+                    </div>
+                    {{--                      --}}
                     <hr>
                     <div>
                         <a href="{{route('account.show',$post->author->id)}}"><img class="rounded-circle" style="vertical-align: middle;width: 100px;height: 100px;border-radius: 100%;"

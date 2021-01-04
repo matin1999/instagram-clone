@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Image;
+use App\Models\Like;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
@@ -19,8 +20,8 @@ class PostSeeder extends Seeder
         $tags = Tag::factory(5)->create();
         Post::factory(200)->create()->each(function ($post) use ($tags) {
             $post->tags()->attach($tags->random(rand(3, 4)));
-            Image::factory()->create(['imageable_type' => "App\Models\Post", 'imageable_id'=>$post->id]);
-            Image::factory()->create(['imageable_type' => "App\Models\Post", 'imageable_id'=>$post->id]);
+            Like::factory(rand(10,20))->create(['likeable_type' => "App\Models\Post", 'likeable_id'=>$post->id]);
+            Image::factory(2)->create(['imageable_type' => "App\Models\Post", 'imageable_id'=>$post->id]);
         });
     }
 }

@@ -25,11 +25,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/profile/{user}', 'UserController@show')->name('account.show');
 Route::get('/{user}/followings', 'UserController@following')->name('following.show');
 Route::get('/{user}/followers', 'UserController@followers')->name('followers.show');
-//show post
+//posts
 Route::get('/post/{post}', 'PostController@show')->name('post.show');
 //auth profile
 Route::middleware(['auth'])->group(function () {
-    //Users
     //follow method
     Route::post('/profile/{user}/follow', 'FollowController@follow')->name('account.follow');
     //setting
