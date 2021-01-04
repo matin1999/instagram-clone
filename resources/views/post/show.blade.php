@@ -40,22 +40,24 @@
                     </div>
                     <br>
                     <hr>
+                   {{--        like bottun and counters        --}}
+                    <hr>
                     <div>
-                        <img class="rounded-circle" style="vertical-align: middle;width: 100px;height: 100px;border-radius: 100%;"
+                        <a href="{{route('account.show',$post->author->id)}}"><img class="rounded-circle" style="vertical-align: middle;width: 100px;height: 100px;border-radius: 100%;"
                              src="{{is_link($post->author->image->path) ? $post->author->image->path : asset(str_replace('public','storage' ,$post->author->image->path))}}">
+                        </a>
+                            {{ $post->author->user_name}}
+
                     </div>
-                    <br>
-                    <br>
                     <div>
-                        <h4 class="title">
-                            {{ $post->author->image->user_name}}
-                        </h4>
+
                         <div class="pt-4 space-y-5 text-left pb-4 border-b">
                             <div class="space-x-4">
                                 <p class="text-gray-500 text-xs font-medium leading-7">Caption:</p>
                                 <h2 class="text-gray-800 mb-2 tracking-wide">{{ $post->caption }}</h2>
                             </div>
                         </div>
+{{--                            other comments                           --}}
                     </div>
                         </div>
 
