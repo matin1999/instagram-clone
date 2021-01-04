@@ -65,7 +65,7 @@
         @if(count($posts) > 0)
             @foreach($posts as $post)
                 <div class="col-lg-3 col-md-4 col-6">
-                        <img class="img-fluid img-thumbnail" src="{{$post->images->first()->path}}">
+                    <a href="{{route('post.show',$post->id)}}"><img class="img-fluid img-thumbnail" src="{{$post->images->first()->path}}"></a>
                 </div>
             @endforeach
         @else

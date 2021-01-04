@@ -20,6 +20,7 @@ class PostSeeder extends Seeder
         Post::factory(200)->create()->each(function ($post) use ($tags) {
             $post->tags()->attach($tags->random(rand(3, 4)));
             Image::factory()->create(['imageable_type' => "App\Models\Post", 'imageable_id'=>$post->id]);
+            Image::factory()->create(['imageable_type' => "App\Models\Post", 'imageable_id'=>$post->id]);
         });
     }
 }
