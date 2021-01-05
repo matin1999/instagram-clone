@@ -26,7 +26,7 @@ class CreatePostRequest extends FormRequest
         return [
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'caption' => 'required|string|min:3|max:300',
-            'comment' => 'required|boolean',
+            'comment' => 'sometimes|boolean',
         ];
     }
 }
