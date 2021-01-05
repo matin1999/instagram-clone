@@ -29,10 +29,6 @@ class Post extends Model
         return $this->morphMany(Mention::class, 'mentionable');
     }
 
-    public function videos()
-    {
-        return $this->morphMany(Video::class, 'videoable');
-    }
 
     public function images()
     {
