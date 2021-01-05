@@ -4,6 +4,7 @@
 namespace App\Repositories;
 
 
+use App\Models\Image;
 use App\Models\User;
 
 class BaseRepository implements BaseRepositoryInterface
@@ -428,5 +429,13 @@ class BaseRepository implements BaseRepositoryInterface
         $this->take     = null;
 
         return $this;
+    }
+    public function createImage($path,$id,$model)
+    {
+        Image::create([
+            'path' => $path,
+            'imageable_id' => $id,
+            'imageable_type' => $model,
+        ]);
     }
 }

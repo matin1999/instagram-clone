@@ -17,7 +17,7 @@
 
                 <div class="row">
                     <!-- Image Input -->
-                    <div class="image-upload profile-image">
+                    <div class="form-group">
                         <div class="file is-boxed">
                             <label class="file-label">
                                 <input class="file-input" type="file" name="image">
@@ -25,7 +25,7 @@
                         </div>
                     </div>
 
-                    <div class="profile-inputs">
+                    <div class="form-group">
                         <div class="field">
                             <label class="label has-text-white">{{ __('user name') }}</label>
                             <div class="control">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
 
-                        <div class="field">
+                        <div class="form-group">
                             <label class="label has-text-white">{{ __('Bio') }}</label>
                             <div class="control">
                                 <textarea class="textarea has-fixed-size" name="bio" maxlength="128">{{ isset($user->bio) ? $user->bio : '' }}</textarea>
@@ -42,7 +42,7 @@
                         </div>
 
                         <!-- Email Input -->
-                        <div class="field">
+                        <div class="form-group">
                             <label class="label has-text-white">{{ __('E-Mail Address') }}</label>
                             <div class="control">
                                 <input class="input" type="email" name="email" placeholder="example@example.com" value="{{ $user->email }}"
@@ -51,7 +51,7 @@
                         </div>
 
                         <!-- Password Input -->
-                        <div class="field">
+                        <div class="form-group">
                             <label class="label has-text-white">{{ __('Password') }}</label>
                             <div class="control">
                                 <input class="input" type="password" name="password" required>
@@ -62,7 +62,7 @@
                         <a class="has-text-primary mb" onclick="this.classList.add('is-hidden'); document.querySelector('#new-pass').classList.remove('is-hidden')">
                             {{ __('Change password?') }}
                         </a>
-                        <div class="field is-hidden">
+                        <div class="form-group">
                             <label class="label has-text-white">{{ __('New Password') }}</label>
                             <div class="control">
                                 <input class="input" type="password" name="new_password">

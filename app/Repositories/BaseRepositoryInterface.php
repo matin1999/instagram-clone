@@ -41,4 +41,7 @@ interface BaseRepositoryInterface
 
     public function find($id);
 
+    public function createImage($path,$id,$model);
+
+
 }
