@@ -24,7 +24,15 @@
                    {{--        like bottun and counters        --}}
                     <div>likes: {{count($post->likes)}}
                         <br>
-                        <i class="fa-heart"></i>
+                        <form method="POST" action="{{route('post.like',$post->id)}}" class="w100">
+                            @csrf
+                            @if(count($like)==0)
+                                <i class="fa-heart"><input type="submit" class="btn btn-success" value="{{ __('like') }}"></i>
+                            @else
+                                <i class="fa-heart"><input type="submit" class="btn btn-danger" value="{{ __('unlike') }}"></i>
+                            @endif
+                        </form>
+
                     </div>
                     {{--                      --}}
                     <hr>

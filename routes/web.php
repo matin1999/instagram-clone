@@ -31,6 +31,8 @@ Route::get('/post/{post}', 'PostController@show')->name('post.show');
 Route::middleware(['auth'])->group(function () {
     //follow method
     Route::post('/profile/{user}/follow', 'FollowController@follow')->name('account.follow');
+    //like
+    Route::post('/{post}/like', 'PostController@like')->name('post.like');
     //setting
     Route::get('/account/settings', 'UserController@settings')->name('account');
     Route::patch('/account/settings', 'UserController@update')->name('account.update');
