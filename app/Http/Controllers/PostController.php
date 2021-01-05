@@ -17,6 +17,11 @@ class PostController extends Controller
         return view('post.show')->with(compact('post', 'like'));
     }
 
+    public function create()
+    {
+        return view('post.create');
+    }
+
     public function like($id)
     {
         $record = Like::where([['likeable_id', $id], ['user_id', Auth::id()]]);

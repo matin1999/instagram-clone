@@ -49,6 +49,14 @@
                             <div class="space-x-4">
                                 <p class="text-gray-500 text-xs font-medium leading-7">Caption:</p>
                                 <h2 class="text-gray-800 mb-2 tracking-wide">{{ $post->caption }}</h2>
+                                @foreach($post->tags as $tag)
+                                    <a class="font-weight-bolder" href="*">#{{$tag->title}}</a>
+                                @endforeach
+                                @foreach($post->mentions as $mention)
+                                    <a class="font-weight-bolder" href="{{route('account.show',$mention->user->id)}}">
+                                        @ {{$mention->user->user_name }}
+                                    </a>
+                                @endforeach
                             </div>
                         </div>
 {{--                            other comments                           --}}

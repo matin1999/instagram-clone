@@ -27,6 +27,8 @@ Route::get('/{user}/followings', 'UserController@following')->name('following.sh
 Route::get('/{user}/followers', 'UserController@followers')->name('followers.show');
 //posts
 Route::get('/post/{post}', 'PostController@show')->name('post.show');
+Route::get('/post/{user}/create', 'PostController@create')->name('post.create');
+Route::post('/post/store', 'PostController@store')->name('post.store');
 //auth profile
 Route::middleware(['auth'])->group(function () {
     //follow method

@@ -24,7 +24,6 @@ class CreateMentionsTable extends Migration
 
             $table->morphs('mentionable');
             $table->timestamps();
-            $table->unique(['mentionable_type', 'mentionable_id', 'user_id']);
         });
     }
 

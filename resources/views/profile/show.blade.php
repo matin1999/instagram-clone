@@ -59,7 +59,12 @@
     </div>
     <hr class="border-secondary">
     <div class="container">
-        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Posts</h1>
+        <h1 class="font-weight-light text-center text-center">Posts</h1>
+        @if($user->id == Auth::id())
+        <a href="{{route('post.create',$user->id)}}"  class="btn btn-outline-success col-md-12">+</a>
+        @endif
+        <br>
+        <br>
         <div class="row text-center text-lg-left">
 
         @if(count($posts) > 0)
