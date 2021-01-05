@@ -15,6 +15,11 @@ class Image extends Model
         'path',
     ];
 
+    public function getUrlAttribute()
+    {
+        return Storage::url($this->attributes['path']);
+    }
+
     public function imageable()
     {
         return $this->morphTo();

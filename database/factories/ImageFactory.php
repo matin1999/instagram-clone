@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Image;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker;
 
 class ImageFactory extends Factory
 {
