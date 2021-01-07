@@ -19,6 +19,14 @@ class PostController extends Controller
         $this->post = $post;
     }
 
+    public function index()
+    {
+        $users = User::with(['followings'])->find(Auth::id());
+        $usersId=$users->followings->pluck('id');
+        $posts=Post::whereIn('user_id', $usersId)->latest()->get();
+        return view('post.index')->with('posts',$posts);
+    }
+
     public function show($id)
     {
         $post = Post::all()->find($id);

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -43,5 +44,10 @@ class Post extends Model
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
+    }
+    public function isLike($id)
+    {
+        $like = Like::where([['likeable_id', $id], ['likeable_type', 'App\Models\Post'], ['user_id', Auth::id()]])->get();
+        return $like;
     }
 }

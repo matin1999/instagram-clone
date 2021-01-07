@@ -31,6 +31,9 @@ Route::get('/post/{user}/create', 'PostController@create')->name('post.create');
 Route::post('/post/store', 'PostController@store')->name('post.store');
 //auth profile
 Route::middleware(['auth'])->group(function () {
+    //Home PAge
+    Route::get('/Home/', 'PostController@index')->name('home');
+
     //follow method
     Route::post('/profile/{user}/follow', 'FollowController@follow')->name('account.follow');
     //like

@@ -26,7 +26,7 @@ class UserUpdateRequest extends FormRequest
         return [
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'user_name' => 'nullable|string|max:32',
-            'biography' => 'nullable|string|max:128',
+            'bio' => 'nullable|string|max:128',
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6',
             'new_password' => 'nullable|string|min:6|different:password',
