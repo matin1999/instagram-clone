@@ -32,10 +32,6 @@ class Story extends Model
         return $this->morphMany(Video::class, 'videoable');
     }
 
-    public function tags()
-    {
-        return $this->morphToMany(Tag::class, 'taggables');
-    }
 
     public function comments()
     {

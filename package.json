@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "font-awesome": "^4.7.0",
+        "fullpage.js": "^3.0.9",
         "tailwindcss": "^2.0.2"
     }
 }

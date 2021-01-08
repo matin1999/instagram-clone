@@ -25,12 +25,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/profile/{user}', 'UserController@show')->name('account.show');
 Route::get('/{user}/followings', 'UserController@following')->name('following.show');
 Route::get('/{user}/followers', 'UserController@followers')->name('followers.show');
-//posts
-Route::get('/post/{post}', 'PostController@show')->name('post.show');
-Route::get('/post/{user}/create', 'PostController@create')->name('post.create');
-Route::post('/post/store', 'PostController@store')->name('post.store');
+
 //auth profile
 Route::middleware(['auth'])->group(function () {
+    //story
+    Route::get('/story/{user}', 'StoryController@show')->name('story.show');
+
+    //posts
+    Route::get('/post/{post}', 'PostController@show')->name('post.show');
+    Route::get('/post/{user}/create', 'PostController@create')->name('post.create');
+    Route::post('/post/store', 'PostController@store')->name('post.store');
+
     //Home PAge
     Route::get('/Home/', 'PostController@index')->name('home');
 

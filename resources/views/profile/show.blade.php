@@ -4,10 +4,10 @@
         <div class="info">
             <div class="row">
                 <div>
-                    @if(!$user->stoires)
+                    @if(!$user->stories)
                     <img class="rounded-circle" style=" vertical-align: middle;width: 100px;height: 100px;border-radius: 100%;" src="{{is_link($user->image->path) ? $user->image->path : asset(str_replace('public','storage' ,$user->image->path))}}">
                     @else
-                        <img class="rounded-circle" style=" display: block;border-radius: 50%;border: 5px solid transparent;box-shadow: 0 0 0 5px red; vertical-align: middle;width: 100px;height: 100px;" src="{{is_link($user->image->path) ? $user->image->path : asset(str_replace('public','storage' ,$user->image->path))}}">
+                        <a href="{{route('story.show',$user->id)}}"><img class="rounded-circle" style=" display: block;border-radius: 50%;border: 5px solid transparent;box-shadow: 0 0 0 5px red; vertical-align: middle;width: 100px;height: 100px;" src="{{is_link($user->image->path) ? $user->image->path : asset(str_replace('public','storage' ,$user->image->path))}}"></a>
                     @endif
                 </div>
                 <br>

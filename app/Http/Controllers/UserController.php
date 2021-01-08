@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\Story;
 use App\Models\User;
 use App\Repositories\UserInterface;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = User::with(['posts', 'stories', 'image', 'followers', 'followings'])->withCount(['posts','followers', 'followings'])->find($id);
+        $user = User::with(['posts', 'stories', 'image', 'followers', 'followings','stories'])->withCount(['posts','followers', 'followings'])->find($id);
         $posts = Post::with('images')->where('user_id', $id)->latest()->get();
         return view('profile.show')->withUser($user)->withPosts($posts);
     }
