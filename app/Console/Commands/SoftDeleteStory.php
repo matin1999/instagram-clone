@@ -40,6 +40,6 @@ class SoftDeleteStory extends Command
      */
     public function handle()
     {
-        DB::table('stories')->where('created_at', '<=', Carbon::now()->addMinutes(2))->update(['deleted_at' => Carbon::now()]);;
+        DB::table('stories')->where('created_at', '<=', Carbon::now()->addDay())->update(['deleted_at' => Carbon::now()]);;
     }
 }

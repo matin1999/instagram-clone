@@ -27,9 +27,9 @@
                         <form method="POST" action="{{route('post.like',$post->id)}}" class="w100">
                             @csrf
                             @if(count($like)==0)
-                                <i class="fa-heart"><input type="submit" class="btn btn-success" value="{{ __('like') }}"></i>
+                                <button type="submit" class="btn" value="{{ __('like') }}"><i class="fa fa-heart btn" style="color: gray" ></i></button>
                             @else
-                                <i class="fa-heart"><input type="submit" class="btn btn-danger" value="{{ __('unlike') }}"></i>
+                                <button type="submit" class="btn" value="{{ __('unlike') }}"><i class="fa fa-heart btn" style="color: red" ></i></button>
                             @endif
                         </form>
 

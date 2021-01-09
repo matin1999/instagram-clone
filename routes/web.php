@@ -29,7 +29,10 @@ Route::get('/{user}/followers', 'UserController@followers')->name('followers.sho
 //auth profile
 Route::middleware(['auth'])->group(function () {
     //story
-    Route::get('/story/{user}', 'StoryController@show')->name('story.show');
+    Route::get('/stories/{user}', 'StoryController@index')->name('story.index');
+    Route::get('/story/{story}', 'StoryController@show')->name('story.show');
+    Route::get('/story/{user}/create', 'StoryController@create')->name('story.create');
+    Route::post('/story/store', 'StoryController@store')->name('story.store');
 
     //posts
     Route::get('/post/{post}', 'PostController@show')->name('post.show');

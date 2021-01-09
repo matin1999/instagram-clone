@@ -24,7 +24,9 @@ class UserController extends Controller
     {
         $user = User::with(['posts', 'stories', 'image', 'followers', 'followings','stories'])->withCount(['posts','followers', 'followings'])->find($id);
         $posts = Post::with('images')->where('user_id', $id)->latest()->get();
-        return view('profile.show')->withUser($user)->withPosts($posts);
+        $stories = Story::with('images')->where('user_id', $id)->onlyTrashed()->latest()->get();
+
+        return view('profile.show')->withUser($user)->withPosts($posts)->withStories($stories);
     }
 
     public function following($id)

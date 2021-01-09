@@ -7,7 +7,7 @@
                     @if(count($user->stories)==0)
                     <img class="rounded-circle" style=" vertical-align: middle;width: 100px;height: 100px;border-radius: 100%;" src="{{is_link($user->image->path) ? $user->image->path : asset(str_replace('public','storage' ,$user->image->path))}}">
                     @else
-                        <a href="{{route('story.show',$user->id)}}"><img class="rounded-circle" style=" display: block;border-radius: 50%;border: 5px solid transparent;box-shadow: 0 0 0 5px red; vertical-align: middle;width: 100px;height: 100px;" src="{{is_link($user->image->path) ? $user->image->path : asset(str_replace('public','storage' ,$user->image->path))}}"></a>
+                        <a href="{{route('story.index',$user->id)}}"><img class="rounded-circle" style=" display: block;border-radius: 50%;border: 5px solid transparent;box-shadow: 0 0 0 5px red; vertical-align: middle;width: 100px;height: 100px;" src="{{is_link($user->image->path) ? $user->image->path : asset(str_replace('public','storage' ,$user->image->path))}}"></a>
                     @endif
                 </div>
                 <br>
@@ -40,6 +40,26 @@
             <a href="{{route('account.show',$user->id)}}">{{ '@'.$user->user_name }}</a>
             <h4>{{ $user->bio }}</h4>
         </div>
+        <hr>
+            {{--        stories     --}}
+        <f>
+            @foreach($stories as $story)
+                @foreach($story->images as $image)
+                @endforeach
+            <figure class="d-inline-block text-center">
+                <a href="{{route('story.show',$story->id)}}">
+                    <img alt="tec" class="rounded-circle" style=" vertical-align: middle;width: 80px;height: 80px;border-radius: 100%;" src="{{is_link($image->path) ? $image->path : asset(str_replace('public','storage' ,$image->path))}}">
+                    <figcaption> {{$story->created_at->diffForHumans()}} </figcaption>
+                </a>
+            </figure>
+            @endforeach
+                <figure class="d-inline-block text-center">
+                    <a href="{{route('story.create',$user->id)}}">
+                        <h1>+</h1>
+                    </a>
+                </figure>
+
+        <hr>
         <div class="user-button">
             @if(auth()->check())
             @if($user->id !== Auth::id())
