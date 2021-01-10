@@ -38,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/post/{post}', 'PostController@show')->name('post.show');
     Route::get('/post/{user}/create', 'PostController@create')->name('post.create');
     Route::post('/post/store', 'PostController@store')->name('post.store');
+    // explore
+    Route::get('/explore', 'PostController@getRandomPost')->name('explore');
 
     //Home PAge
     Route::get('/Home/', 'PostController@index')->name('home');

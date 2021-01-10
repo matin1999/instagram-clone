@@ -66,4 +66,9 @@ class PostController extends Controller
 
         return redirect()->back();
     }
+
+    public function getRandomPost() {
+        $posts = Post::inRandomOrder()->with(['images'])->latest()->paginate(16);
+        return view('post.explore')->withPosts($posts);
+    }
 }
