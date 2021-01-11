@@ -47,7 +47,7 @@
                 @foreach($story->images as $image)
                 @endforeach
             <figure class="d-inline-block text-center">
-                <a href="{{route('story.show',$story->id)}}">
+                <a href="{{route('story.show',$story->user_id)}}">
                     <img alt="tec" class="rounded-circle" style=" vertical-align: middle;width: 80px;height: 80px;border-radius: 100%;" src="{{is_link($image->path) ? $image->path : asset(str_replace('public','storage' ,$image->path))}}">
                     <figcaption> {{$story->created_at->diffForHumans()}} </figcaption>
                 </a>

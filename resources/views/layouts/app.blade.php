@@ -32,8 +32,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
+                    <ul class="navbar-nav mr-6">
+                        {{--                            search bar                          --}}
+                        <li class="nav-item align-content-center">
+                            <form class="" >
+                                <input class="" type="search" placeholder="Search..." autofocus>
+                            </form>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -52,6 +57,7 @@
                                 </li>
                             @endif
                         @else
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}"><i class="fa fa-home">{{ __('Home') }}</i></a>
                             </li>

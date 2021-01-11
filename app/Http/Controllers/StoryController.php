@@ -25,7 +25,8 @@ class StoryController extends Controller
     }
     public function show($id)
     {
-        $stories = Story::with('images','creator','mentions')->withTrashed()->find($id)->get();
+        $stories = Story::with('images','creator','mentions')->withTrashed()->where('user_id',$id)->whereNotNull('deleted_at')->get();
+
         return view('story.show')->withStories($stories);
     }
     public function create($id)
