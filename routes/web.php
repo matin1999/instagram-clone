@@ -33,11 +33,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/story/{story}', 'StoryController@show')->name('story.show');
     Route::get('/story/{user}/create', 'StoryController@create')->name('story.create');
     Route::post('/story/store', 'StoryController@store')->name('story.store');
-
     //posts
     Route::get('/post/{post}', 'PostController@show')->name('post.show');
     Route::get('/post/{user}/create', 'PostController@create')->name('post.create');
     Route::post('/post/store', 'PostController@store')->name('post.store');
+    //comment
+    Route::post('/comment/store', 'CommentController@store')->name('comment.add');
+    Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
     // explore
     Route::get('/explore', 'PostController@getRandomPost')->name('explore');
 
