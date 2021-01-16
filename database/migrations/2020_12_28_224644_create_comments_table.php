@@ -16,7 +16,8 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->Integer('parent_id')
-                ->unsigned();
+                ->unsigned()
+            ->nullable();
 
             $table->morphs('commentable');
 

@@ -13,11 +13,9 @@ class AddExpiretimeToStoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('stories', function (Blueprint $table) {
             Schema::table('stories', function (Blueprint $table) {
-                $table->timestamp('expire_time')->default(\Carbon\Carbon::now()->addDay());
+                $table->dateTime('expire_time')->default(\Illuminate\Support\Carbon::now()->addDay());
             });
-        });
     }
 
 
