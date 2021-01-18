@@ -28,6 +28,8 @@ Route::get('/{user}/followers', 'UserController@followers')->name('followers.sho
 
 //auth profile
 Route::middleware(['auth'])->group(function () {
+    //message
+    Route::get('direct/{user}','MessageController@show')->name('direct.show');
     //story
     Route::get('/stories/{user}', 'StoryController@index')->name('story.index');
     Route::get('/story/{story}', 'StoryController@show')->name('story.show');

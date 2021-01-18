@@ -9,7 +9,6 @@ class Search extends Component
 {
     public $search;
     public $results;
-    public $count;
     public function render()
     {
         $users=User::where('user_name', 'like', '%'.$this->search.'%')->with('image')->limit(6)->get();

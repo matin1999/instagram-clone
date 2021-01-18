@@ -76,6 +76,7 @@
                 <a href="{{ route('account') }}" class="btn btn-secondary col-12"><span>{{__('Settings') }}</span></a>
             @endif
             @endif
+                <a href="{{route('direct.show',$user->id)}}" class="btn btn-outline-success col-12" >Direct <i class="fa fa-telegram"></i></a>
         </div>
     </div>
     <hr class="border-secondary">

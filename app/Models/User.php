@@ -121,4 +121,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class, 'sent_to_id');
     }
+
+    public function sendMessageTo($recipient, $message)
+    {
+        return $this->sent()->create([
+            'body'       => $message,
+            'sent_to_id' => $recipient,
+        ]);
+    }
 }
