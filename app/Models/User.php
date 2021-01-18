@@ -111,8 +111,14 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function messages()
+    public function sent()
     {
-        return $this->hasMany(Message::class);
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    // A user can also receive a message
+    public function received()
+    {
+        return $this->hasMany(Message::class, 'sent_to_id');
     }
 }
