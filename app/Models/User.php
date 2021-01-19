@@ -125,6 +125,7 @@ class User extends Authenticatable
     public function sendMessageTo($recipient, $message)
     {
         return $this->sent()->create([
+            'sender_id'=>$this->id,
             'body'       => $message,
             'sent_to_id' => $recipient,
         ]);

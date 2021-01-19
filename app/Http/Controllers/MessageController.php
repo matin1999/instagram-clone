@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,20 +11,29 @@ class MessageController extends Controller
 {
     public function show($id)
     {
-        $user=User::with('image')->find($id)->get();
-        return view('direct.show',compact('user',$user));
+        $sents=Message::with('sender','receiver')
+            ->where('sent_to_id',$id)
+            ->where('sender_id',Auth::id())
+            ->get();
+        $recieves=Message::with('sender','receiver')
+            ->where('sender_id',$id)
+            ->where('sent_to_id',Auth::id())
+            ->get();
+        $messages = collect();
+
+        foreach ($sents as $sent)
+            $messages->push($sent);
+
+        foreach ($recieves as $recieve)
+            $messages->push($recieve);
+        $messages=$messages->sortBy('created_at');
+        return view('direct.show',compact(['messages','id']));
     }
 
-    public function sendMessage(Request $request)
+    public function sendMessage(Request $request,$id)
     {
-        // Do the validation...
+        Auth::user()->sendMessageTo($id,  $request->body);
+        return redirect()->back();
 
-        // Send the message from the current user to the user with ID of 1,
-        // You probably always want the current logged-in user as the sender.
-        // We talk about the recipient later...
-        //
-        Auth::user()->sendMessageTo(1,  $request->body);
-
-        // Set flash message, render view, etc...
     }
 }
