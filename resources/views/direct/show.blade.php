@@ -132,6 +132,7 @@
                                             {{$message->body}}
                                         </p>
                                     </div>
+
                                 </li>
                             @endif
                         @endforeach

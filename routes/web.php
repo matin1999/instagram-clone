@@ -30,6 +30,7 @@ Route::get('/{user}/followers', 'UserController@followers')->name('followers.sho
 Route::middleware(['auth'])->group(function () {
     //message
     Route::get('direct/{user}','MessageController@show')->name('direct.show');
+    Route::get('direct','MessageController@index')->name('direct.index');
     Route::post('send/message/{user}','MessageController@sendMessage')->name('send.message');
     //story
     Route::get('/stories/{user}', 'StoryController@index')->name('story.index');
