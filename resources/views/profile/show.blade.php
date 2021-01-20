@@ -72,7 +72,8 @@
                         <input type="submit" class="btn btn-primary col-12" value="{{ __('Follow') }}">
                     @endif
                 </form>
-            @else
+                    <a href="{{route('direct.show',$user->id)}}" class="btn btn-outline-success col-12" >Direct <i class="fa fa-telegram"></i></a>
+                @else
                 <a href="{{ route('account') }}" class="btn btn-secondary col-12"><span>{{__('Settings') }}</span></a>
             @endif
             @endif

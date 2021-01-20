@@ -59,6 +59,10 @@
                         @else
 
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('direct.index') }}"><i class="fa fa-telegram"></i></a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}"><i class="fa fa-home">{{ __('Home') }}</i></a>
                             </li>
 
